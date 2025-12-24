@@ -1,22 +1,27 @@
 {
-  "name": "codexa-sdk-reference",
+  "name": "codexa-frontend",
+  "private": true,
   "version": "1.0.0",
-  "description": "Reference implementation of the Codexa Protocol",
-  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "build": "tsc",
-    "test": "jest",
-    "start": "ts-node src/examples/cascade_demo.ts"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.344.0"
+  },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.19",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10"
   }
 }
