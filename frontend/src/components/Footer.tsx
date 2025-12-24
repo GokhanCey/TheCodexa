@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Twitter } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 const Footer: React.FC = () => {
     return (
@@ -8,9 +8,7 @@ const Footer: React.FC = () => {
                 <a href="https://github.com/GokhanCey/TheCodexa" target="_blank" rel="noopener noreferrer" className="p-3 bg-surface rounded-full hover:bg-surface/80 hover:text-primary transition-colors">
                     <Github size={20} />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-surface rounded-full hover:bg-surface/80 hover:text-secondary transition-colors">
-                    <Twitter size={20} />
-                </a>
+
             </div>
             <p className="text-muted text-sm font-mono">
                 CODEXA © 2025 • Agent Credentialing & Delegation Protocol
