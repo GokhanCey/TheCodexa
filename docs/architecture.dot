@@ -1,0 +1,72 @@
+digraph CodexaFinal {
+    // ---------------------------------------------------------
+    // GLOBAL SETTINGS
+    // ---------------------------------------------------------
+    layout=circo;       
+    mindist=1.8;        // SLIGHT INCREASE: Fixes the "Store" overlap
+    nodesep=0.6;
+    overlap=false;      
+    splines=curved;     
+    bgcolor="#111111";
+    fontname="Arial Bold";
+
+    // COMPACT MARGIN
+    margin=0.1;
+    pad=0.1;
+    
+    // ---------------------------------------------------------
+    // STYLING
+    // ---------------------------------------------------------
+    node [style="filled,rounded", shape=box, fontname="Arial Bold", fontsize=16, margin=0.4, penwidth=0];
+    
+    // Actors
+    node [fillcolor="#1565C0", fontcolor="#E3F2FD"]; 
+    Taskmaster [label="Taskmaster\n(Delegator)"]; 
+    Worker [label="Worker Agent\n(Delegatee)"];
+    
+    // Verifier
+    node [fillcolor="#FFC107", fontcolor="#111111"];
+    Verifier [label="Verifier / Oracle"];
+
+    // Logic
+    node [fillcolor="#263238", fontcolor="#ECEFF1", shape=rect, penwidth=2, color="#546E7A"];
+    Identity [label="Agent DID\n(Codexa Identity)"];
+    CredentialStore [label="Credential Store\n(JSON-LD)"];
+    Reputation [label="Reputation\nEngine"];
+    
+    // Policy
+    node [fillcolor="#4A148C", fontcolor="#E1BEE7", penwidth=0]; 
+    PolicyEngine [label="Delegation\nPolicy Engine"]; 
+
+    // Chain
+    node [fillcolor="#283593", fontcolor="#C5CAE9", shape=component];
+    StateAnchor [label="State\nAnchor"];
+    Registry [label="Issuer\nRegistry"];
+
+    // Storage
+    node [fillcolor="#004D40", fontcolor="#B2DFDB", shape=cylinder];
+    Storage [label="IPFS / Swarm"];
+
+    // ---------------------------------------------------------
+    // CONNECTIONS (Push labels away)
+    // ---------------------------------------------------------
+    edge [fontname="Arial", fontsize=14, color="#90A4AE", penwidth=3.0, arrowsize=1.2, fontcolor="#CFD8DC", labeldistance=2.5]; 
+
+    // Main Flow
+    Taskmaster -> Worker [label=" 1. Request", color="#42A5F5", fontcolor="#42A5F5"];
+    Worker -> Verifier [label=" 2. Submit"];
+    Verifier -> Storage [label=" 3. Store"];
+    Verifier -> CredentialStore [label=" 4. Issue"];
+    Verifier -> StateAnchor [label=" 5. Anchor", style=dashed];
+
+    // Internal Logic
+    CredentialStore -> Reputation [label=" history", style=dotted];
+    Reputation -> PolicyEngine [label=" score", style=dotted];
+    Identity -> PolicyEngine [label=" verify", style=dotted];
+
+    // Decision
+    PolicyEngine -> Taskmaster [label=" 6. AUTHENTICATED", color="#FF5252", fontcolor="#FF5252", penwidth=4.0];
+
+    // Context
+    Registry -> Verifier [style=dotted, color="#546E7A", constraint=false];
+}
