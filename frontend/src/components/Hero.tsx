@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
                         Read Protocol
                     </button>
                     <a
-                        href="https://github.com"
+                        href="https://github.com/GokhanCey/TheCodexa"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-3 border border-border bg-surface/50 backdrop-blur text-text rounded hover:bg-surface transition-colors font-mono inline-block"

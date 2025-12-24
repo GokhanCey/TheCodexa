@@ -40,7 +40,7 @@ npm start
 *Expected output: A simulation of an Orchestrator Agent issuing credentials and delegating tasks to a sub-agent.*
 
 ### Showcase Website
-View the protocol presentation site:
+View the protocol presentation site: [TheCodexa Live Demo](https://gokhancey.github.io/TheCodexa/)
 ```bash
 cd frontend
 npm install
